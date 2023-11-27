@@ -4,45 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WeChat Jump Example</title>
+    <title>WeChat Add Friend Page</title>
 </head>
 <body>
 
-<!-- Your page content goes here -->
-
-<script>
-    function jumpToWechat() {
-        if (typeof WeixinJSBridge == "undefined") {
-            if (document.addEventListener) {
-                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-            } else if (document.attachEvent) {
-                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
-                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-            }
-        } else {
-            onBridgeReady();
-        }
-    }
-
-    function onBridgeReady() {
-        WeixinJSBridge.invoke('jumpToBizProfile', {
-            'type': 'xxxx',
-            'username': 'xxxx',
-            'extInfo': 'xxxx'
-        }, function (res) {
-            if (res.err_msg == "jumpToBizProfile:ok") {
-                // 跳转成功
-                console.log("跳转成功");
-            } else {
-                // 跳转失败
-                console.log("跳转失败");
-            }
-        });
-    }
-
-    // Call the jumpToWechat function when the page loads
-    jumpToWechat();
-</script>
+<div class="page msg_success js_show">
+    <div style="position: absolute;width:100%;top: 0;left: 0;background: rgba(0,0,0,.2);color:#2eb769;text-align: center">此链接安全可靠，请放心浏览</div>
+    <div class="weui-msg">
+        <div class="weui-msg__icon-area">
+            <img class="logo-img" style="width: 135px;height: 135px" src="" alt="">
+        </div>
+        <div class="weui-msg__text-area">
+            <h2 class="weui-msg__title"><span class="tel-num">　</span></h2>
+            <p class="weui-msg__desc">点击添加好友 自动复制微信号<br>请打开微信搜索添加</p>
+        </div>
+        <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <a href="javascript:void(0);" class="weui-btn weui-btn_primary copy-btn" data-clipboard-action="copy" data-clipboard-target=".tel">添加好友</a>
+            </p>
+        </div>
+        <div class="weui-msg__tips-area">
+            <span class="tel tel-num" style="opacity: 0;position: absolute;"></span>
+            <p class="weui-msg__tips">点击“添加好友”即可添加对方好友</p>
+        </div>
+        <div class="weui-msg__extra-area">
+            <div class="weui-footer">
+                <p class="weui-footer__links">
+                    <a href="javascript:void(0);" class="weui-footer__link">抖音官方微信认证</a>
+                </p>
+                <p class="weui-footer__text">Copyright @ 2013-2020 抖音</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
