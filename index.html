@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeChat Jump Example</title>
+</head>
+<body>
+
+<!-- Your page content goes here -->
+
+<script>
+    function jumpToWechat() {
+        if (typeof WeixinJSBridge == "undefined") {
+            if (document.addEventListener) {
+                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+            } else if (document.attachEvent) {
+                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+            }
+        } else {
+            onBridgeReady();
+        }
+    }
+
+    function onBridgeReady() {
+        WeixinJSBridge.invoke('jumpToBizProfile', {
+            'type': 'xxxx',
+            'username': 'xxxx',
+            'extInfo': 'xxxx'
+        }, function (res) {
+            if (res.err_msg == "jumpToBizProfile:ok") {
+                // 跳转成功
+                console.log("跳转成功");
+            } else {
+                // 跳转失败
+                console.log("跳转失败");
+            }
+        });
+    }
+
+    // Call the jumpToWechat function when the page loads
+    jumpToWechat();
+</script>
+
+</body>
+</html>
